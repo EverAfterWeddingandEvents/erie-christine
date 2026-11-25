@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Erie Samuel &amp; Christine Ann · December 28, 2026</title>
+  <meta name="description" content="Together with their families, Erie Samuel and Christine Ann request the honor of your presence on their wedding day, December 28, 2026.">
+  <meta name="theme-color" content="#3d0a14">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Reusable gold artwork -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f6e6b8"/>
+        <stop offset=".35" stop-color="#d4ad6a"/>
+        <stop offset=".6" stop-color="#f9edc9"/>
+        <stop offset="1" stop-color="#b98c4c"/>
+      </linearGradient>
+
+      <symbol id="monogram" viewBox="0 0 120 150">
+        <g fill="none" stroke="url(#gold)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <!-- crown -->
+          <path d="M44 30 L41 13 L51 22 L60 8 L69 22 L79 13 L76 30 Z"/>
+          <path d="M43 34 H77"/>
+          <circle cx="60" cy="5" r="1.8"/><circle cx="41" cy="10.500" r="1.500"/><circle cx="79" cy="10.500" r="1.500"/>
+          <!-- wreath -->
+          <path d="M60 142 C28 138 14 112 18 86 C20 68 30 54 44 47"/>
+          <path d="M60 142 C92 138 106 112 102 86 C100 68 90 54 76 47"/>
+          <path d="M21 76 q-11 -3 -13 -13 q11 1 13 13 M18 93 q-12 0 -16 -9 q11 -2 16 9 M21 110 q-12 3 -18 -5 q10 -5 18 5 M30 125 q-10 6 -19 0 q8 -8 19 0 M43 136 q-8 8 -18 5 q5 -10 18 -5 M30 60 q-9 -6 -8 -16 q10 4 8 16"/>
+          <path d="M99 76 q11 -3 13 -13 q-11 1 -13 13 M102 93 q12 0 16 -9 q-11 -2 -16 9 M99 110 q12 3 18 -5 q-10 -5 -18 5 M90 125 q10 6 19 0 q-8 -8 -19 0 M77 136 q8 8 18 5 q-5 -10 -18 -5 M90 60 q9 -6 8 -16 q-10 4 -8 16"/>
+          <path d="M52 146 q8 -7 16 0"/>
+        </g>
+        <text x="60" y="86" text-anchor="middle" font-family="Cinzel, serif" font-size="27" fill="url(#gold)">E</text>
+        <text x="60" y="116" text-anchor="middle" font-family="Cinzel, serif" font-size="27" fill="url(#gold)">C</text>
+      </symbol>
+
+      <symbol id="flourish" viewBox="0 0 240 20">
+        <g fill="none" stroke="url(#gold)" stroke-width="1.100" stroke-linecap="round">
+          <path d="M4 10 H96"/><path d="M144 10 H236"/>
+          <path d="M96 10 q8 -9 16 0 q-8 9 -16 0 Z"/><path d="M144 10 q-8 -9 -16 0 q8 9 16 0 Z"/>
+          <path d="M120 3 l5 7 l-5 7 l-5 -7 Z"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- fixed velvet-and-roses backdrop for the whole page -->
+  <div class="backdrop" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="petals" id="petals" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Sections">
+    <a href="#top" class="nav__mark" aria-label="Back to top">E <span>&amp;</span> C</a>
+    <div class="nav__links">
+      <a href="#day">The Day</a>
+      <a href="#entourage">Entourage</a>
+      <a href="#rsvp">RSVP</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+
+    <h1 class="sr-only">Erie Samuel &amp; Christine Ann — together with their families, request the honor of your presence as they exchange vows on Monday, December 28, 2026 at 1:00 PM, Our Lady of the Most Holy Rosary Cathedral. Reception to follow at Ariana Hotel.</h1>
+
+    <div class="invitation-wrap">
+
+      <img class="invitation" draggable="false" src="invitation.webp" width="882" height="1259" alt="" fetchpriority="high">
+
+    </div>
+
+    <a class="scroll-cue" href="#countdown" aria-label="Scroll down"><span></span></a>
+  </header>
+
+  <!-- ============ COUNTDOWN ============ -->
+  <section class="section section--tight" id="countdown">
+    <p class="eyebrow reveal">Counting down to forever</p>
+    <div class="countdown reveal" id="timer" role="timer" aria-live="off">
+      <div class="countdown__cell"><span class="countdown__num gold-text" data-unit="days">--</span><span class="countdown__label">Days</span></div>
+      <div class="countdown__cell"><span class="countdown__num gold-text" data-unit="hours">--</span><span class="countdown__label">Hours</span></div>
+      <div class="countdown__cell"><span class="countdown__num gold-text" data-unit="minutes">--</span><span class="countdown__label">Minutes</span></div>
+      <div class="countdown__cell"><span class="countdown__num gold-text" data-unit="seconds">--</span><span class="countdown__label">Seconds</span></div>
+    </div>
+  </section>
+
+  <!-- ============ THE DAY ============ -->
+  <section class="section" id="day">
+    <div class="section__head reveal">
+      <p class="eyebrow">Monday · December 28, 2026</p>
+      <h2 class="script gold-text">The Day</h2>
+      <svg class="flourish" aria-hidden="true"><use href="#flourish"/></svg>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <p class="card__kicker">The Ceremony</p>
+        <p class="card__time gold-text">1:00 PM</p>
+        <h3 class="card__place">Our Lady of the Most Holy Rosary Cathedral</h3>
+        <p class="card__note">Where we exchange our vows</p>
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=Our+Lady+of+the+Most+Holy+Rosary+Cathedral">View map</a>
+      </article>
+
+      <article class="card reveal">
+        <p class="card__kicker">The Reception</p>
+        <p class="card__time gold-text">To Follow</p>
+        <h3 class="card__place">Ariana Hotel</h3>
+        <p class="card__note">Dinner, toasts and dancing</p>
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=Ariana+Hotel">View map</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ ENTOURAGE ============ -->
+  <section class="section" id="entourage">
+    <div class="section__head reveal">
+      <p class="eyebrow">Those who walk with us</p>
+      <h2 class="script gold-text">The Entourage</h2>
+      <svg class="flourish" aria-hidden="true"><use href="#flourish"/></svg>
+    </div>
+    <div class="entourage" id="entourage-list"></div>
+  </section>
+
+  <!-- ============ RSVP ============ -->
+  <section class="section" id="rsvp">
+    <div class="section__head reveal">
+      <p class="eyebrow">Kindly respond</p>
+      <h2 class="script gold-text">Will You Join Us?</h2>
+      <svg class="flourish" aria-hidden="true"><use href="#flourish"/></svg>
+    </div>
+
+    <form class="rsvp group reveal" id="rsvp-form">
+      <label class="field">
+        <span class="field__label">Your full name</span>
+        <input type="text" name="name" required maxlength="120" autocomplete="name">
+      </label>
+
+      <fieldset class="field choice">
+        <legend class="field__label">Will you attend?</legend>
+        <label><input type="radio" name="attending" value="yes" required><span>Joyfully accepts</span></label>
+        <label><input type="radio" name="attending" value="no"><span>Regretfully declines</span></label>
+      </fieldset>
+
+      <label class="field" id="rsvp-guests">
+        <span class="field__label">Number of guests, including you</span>
+        <input type="number" name="guests" min="1" max="10" value="1" inputmode="numeric">
+      </label>
+
+      <label class="field">
+        <span class="field__label">A message for the couple <em>(optional)</em></span>
+        <textarea name="message" rows="3" maxlength="500"></textarea>
+      </label>
+
+      <!-- left empty by people; filled in by spam bots -->
+      <label class="rsvp__trap" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+
+      <button class="btn btn--solid" type="submit">Send RSVP</button>
+      <p class="rsvp__status" id="rsvp-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <img class="footer__monogram" src="crest.webp" width="191" height="200" alt="E and C monogram" draggable="false" loading="lazy">
+    <p class="script gold-text footer__names">Erie &amp; Christine</p>
+    <p class="caps">12 · 28 · 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
