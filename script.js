@@ -232,6 +232,53 @@ function dimBackdropOnScroll() {
   update();
 }
 
+const pause = (ms) => new Promise((resolve) => setTimeout(resolve, calmMotion ? 0 : ms));
+
+/* Fade the form away, then bring in the thank-you: a gold heart draws itself,
+   the words rise in, and a little burst of gold dust and petals flies out. */
+async function showThanks(form, attending) {
+  const startHeight = form.offsetHeight;
+  form.classList.add("is-leaving");
+  await pause(450);
+
+  const thanks = el("div", "rsvp__thanks");
+  thanks.innerHTML =
+    '<svg class="rsvp__heart" viewBox="0 0 64 58" aria-hidden="true">' +
+    '<path d="M32 54C12 40 4 29 4 18A13 13 0 0 1 32 12A13 13 0 0 1 60 18C60 29 52 40 32 54Z" pathLength="1"/></svg>';
+  thanks.append(
+    el("p", "script gold-text", "Thank you"),
+    el("p", "rsvp__note", attending
+      ? "Your reply is in. We can't wait to celebrate with you."
+      : "Your reply is in. You will be missed, and you are in our hearts.")
+  );
+
+  if (!calmMotion) {
+    const burst = el("div", "rsvp__burst");
+    for (let i = 0; i < 26; i++) {
+      const bit = el("span", i % 3 === 0 ? "bit bit--petal" : "bit");
+      const angle = rand(0, Math.PI * 2);
+      const reach = rand(70, 200);
+      bit.style.cssText =
+        `--x:${(Math.cos(angle) * reach).toFixed(0)}px;--y:${(Math.sin(angle) * reach - 30).toFixed(0)}px;` +
+        `--size:${rand(4, 10).toFixed(1)}px;--delay:${rand(0, 0.25).toFixed(2)}s;--spin:${rand(-240, 240).toFixed(0)}deg`;
+      burst.append(bit);
+    }
+    thanks.prepend(burst);
+  }
+
+  form.replaceChildren(thanks);
+  form.classList.remove("is-sending", "is-leaving");
+  form.classList.add("is-done");
+
+  // Ease the card from the form's height down to the message's height.
+  const endHeight = form.offsetHeight;
+  form.style.height = `${startHeight}px`;
+  void form.offsetHeight;
+  form.style.height = `${endHeight}px`;
+  form.addEventListener("transitionend", () => { form.style.height = ""; }, { once: true });
+  form.scrollIntoView({ behavior: calmMotion ? "auto" : "smooth", block: "center" });
+}
+
 function setUpRsvp() {
   const form = document.getElementById("rsvp-form");
   const status = document.getElementById("rsvp-status");
@@ -260,6 +307,7 @@ function setUpRsvp() {
     if (!attending) data.set("guests", "0");
 
     button.disabled = true;
+    form.classList.add("is-sending");
     say("Sending your reply…");
     try {
       // A plain form post, so the browser sends it to Apps Script without a preflight.
@@ -267,16 +315,10 @@ function setUpRsvp() {
       const result = await response.json();
       if (!result.ok) throw new Error(result.error || "");
 
-      const thanks = el("div", "rsvp__thanks");
-      thanks.append(
-        el("p", "script gold-text", "Thank you"),
-        el("p", "", attending
-          ? "Your reply is in. We can't wait to celebrate with you."
-          : "Your reply is in. You will be missed, and you are in our hearts.")
-      );
-      form.replaceChildren(thanks);
+      await showThanks(form, attending);
     } catch (error) {
       button.disabled = false;
+      form.classList.remove("is-sending");
       say(error.message || "We couldn't send your reply. Please check your connection and try again.", true);
     }
   });

@@ -436,7 +436,73 @@ a { color: inherit; }
 .rsvp__status { margin: -8px 0 0; min-height: 1.6em; text-align: center; font-style: italic; color: var(--gold-light); }
 .rsvp__status.is-error { color: #ffb4b4; }
 
-.rsvp__thanks { text-align: center; padding: 12px 0; }
+/* sending: the fields hush, the button shimmers and shows a spinner */
+.rsvp { transition: height .6s cubic-bezier(.2, .7, .2, 1); }
+.rsvp > * { transition: opacity .4s ease, transform .4s ease, filter .4s ease; }
+.rsvp.is-sending .field { opacity: .45; pointer-events: none; }
+.rsvp.is-sending .btn--solid {
+  opacity: 1;
+  color: transparent;
+  position: relative;
+  background-size: 220% auto;
+  animation: foil 1.4s linear infinite;
+}
+.rsvp.is-sending .btn--solid::after {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border: 2px solid rgba(43, 6, 14, .25);
+  border-top-color: var(--wine-900);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+.rsvp.is-sending .rsvp__status { animation: breathe 1.4s ease-in-out infinite; }
+
+/* leaving: the whole form lifts and fades before the thank-you arrives */
+.rsvp.is-leaving > * { opacity: 0; transform: translateY(-14px); filter: blur(3px); }
+
+.rsvp__thanks { position: relative; text-align: center; padding: 12px 0; }
+.rsvp__thanks > * { animation: thanks-in .9s cubic-bezier(.2, .7, .2, 1) both; }
+.rsvp__thanks .script { animation: thanks-in .9s cubic-bezier(.2, .7, .2, 1) .55s both, foil 7s linear infinite; }
+.rsvp__thanks .rsvp__note { animation-delay: .85s; }
+
+.rsvp__heart {
+  display: block;
+  width: 58px;
+  margin: 0 auto 6px;
+  overflow: visible;
+  animation: heart-beat 1.6s ease-in-out 1.5s 2 both;
+}
+.rsvp__heart path {
+  fill: rgba(217, 182, 118, 0);
+  stroke: var(--gold-light);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: heart-draw 1.1s ease-in-out .15s forwards, heart-fill .7s ease 1.1s forwards;
+}
+
+.rsvp__burst { position: absolute; top: 40px; left: 50%; width: 0; height: 0; animation: none; }
+.bit {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff6d8 0, #e9c987 55%, #c79a58 100%);
+  opacity: 0;
+  animation: burst 1.5s cubic-bezier(.15, .7, .3, 1) calc(1s + var(--delay)) both;
+}
+.bit--petal {
+  width: calc(var(--size) * 1.3);
+  height: calc(var(--size) * 1.7);
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(135deg, #f3ced0, #cf8f9a 70%, #b56d7d);
+}
+
 .rsvp__thanks .script { font-size: clamp(2.4rem, 8vw, 3.2rem); }
 .rsvp__thanks p { margin: 6px 0 0; }
 
@@ -521,6 +587,17 @@ a { color: inherit; }
 .section__head.is-in .flourish { transform: scaleX(1); }
 .countdown__num.tick { animation: foil 7s linear infinite, tick .5s ease; }
 
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes breathe { 50% { opacity: .45; } }
+@keyframes thanks-in { from { opacity: 0; transform: translateY(18px); } }
+@keyframes heart-draw { to { stroke-dashoffset: 0; } }
+@keyframes heart-fill { to { fill: rgba(217, 182, 118, .9); } }
+@keyframes heart-beat { 0%, 100% { transform: scale(1); } 30% { transform: scale(1.14); } 55% { transform: scale(.97); } }
+@keyframes burst {
+  0% { opacity: 0; transform: translate(0, 0) scale(.3) rotate(0); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--x), calc(var(--y) + 40px)) scale(1) rotate(var(--spin)); }
+}
 @keyframes float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-10px) rotate(.4deg); } }
 @keyframes glint { 0%, 55% { background-position: 150% 0; } 85%, 100% { background-position: -50% 0; } }
 @keyframes foil { to { background-position: -220% center; } }
@@ -548,6 +625,8 @@ a { color: inherit; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .invitation-wrap, .invitation-wrap::after, .scroll-cue span, .backdrop, .gold-text, .countdown__num.tick { animation: none; }
   .petals, .sparkles { display: none; }
+  .rsvp, .rsvp > *, .rsvp__thanks > *, .rsvp__heart, .rsvp__heart path, .rsvp.is-sending .btn--solid, .rsvp.is-sending .rsvp__status { animation: none; transition: none; }
+  .rsvp__heart path { stroke-dashoffset: 0; fill: rgba(217, 182, 118, .9); }
   .section__head .flourish { transform: none; transition: none; }
   .card { transition: none; }
 }
