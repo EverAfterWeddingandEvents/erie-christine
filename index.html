@@ -6,47 +6,129 @@
   <title>Erie Samuel &amp; Christine Ann · December 28, 2026</title>
   <meta name="description" content="Together with their families, Erie Samuel and Christine Ann request the honor of your presence on their wedding day, December 28, 2026.">
   <meta name="theme-color" content="#3d0a14">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <!-- Reusable gold artwork -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <!-- ============ Ornaments & icons (drawn once, reused everywhere with <use>) ============ -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
     <defs>
-      <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#f6e6b8"/>
-        <stop offset=".35" stop-color="#d4ad6a"/>
-        <stop offset=".6" stop-color="#f9edc9"/>
-        <stop offset="1" stop-color="#b98c4c"/>
-      </linearGradient>
+      <!-- Corner flourish, drawn for the top-left corner; the other three are mirrored in CSS.
+           One "arm" runs along the top edge and is mirrored across the diagonal for the left edge;
+           a small rose and a leaf sit on the diagonal itself. -->
+      <symbol id="orn-corner" viewBox="0 0 160 160">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <g id="orn-arm">
+            <!-- main scroll -->
+            <path d="M30 17C46 6 70 5 87 15c13 8 13 25 0 27-9 1-14-8-9-14 4-4 10-2 10 3"/>
+            <!-- second scroll, further along the edge -->
+            <path d="M84 13.500C100 5 122 5 136 13c9 5 8 16-1 17-6 0-9-6-5-9 3-2 6 0 5 3"/>
+            <!-- tail -->
+            <path d="M134 12c7-4 14-4 20-1"/>
+            <!-- curl hanging under the main scroll -->
+            <path d="M85 42c-6 9-18 10-25 3-4-5 0-12 6-10 3 1 4 5 1 7"/>
+            <!-- small curl between the two scrolls -->
+            <path d="M104 29c2 7 9 9 14 5"/>
+            <!-- leaves along the stem -->
+            <path d="M53 9c5 6 5 14 0 20-5-6-5-14 0-20z" fill="currentColor" fill-opacity=".2"/>
+            <path d="M53 12v14" stroke-width="1" stroke-opacity=".7"/>
+            <path d="M110 7.500c4 5 4 12 0 17-4-5-4-12 0-17z" fill="currentColor" fill-opacity=".2"/>
+            <path d="M110 10v11" stroke-width="1" stroke-opacity=".7"/>
+            <path d="M139 11c5-7 13-9 20-6-4 7-12 9-20 6z" fill="currentColor" fill-opacity=".2"/>
+            <!-- buds -->
+            <circle cx="88" cy="31" r="1.800" fill="currentColor" stroke="none"/>
+            <circle cx="135" cy="24" r="1.500" fill="currentColor" stroke="none"/>
+            <circle cx="154" cy="11" r="1.500" fill="currentColor" stroke="none"/>
+            <circle cx="96" cy="46" r="1.300" fill="currentColor" stroke="none"/>
+            <circle cx="102" cy="51" r="1" fill="currentColor" stroke="none"/>
+            <circle cx="123" cy="37" r="1.200" fill="currentColor" stroke="none"/>
+          </g>
+          <use href="#orn-arm" transform="matrix(0 1 1 0 0 0)"/>
 
-      <symbol id="monogram" viewBox="0 0 120 150">
-        <g fill="none" stroke="url(#gold)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <!-- crown -->
-          <path d="M44 30 L41 13 L51 22 L60 8 L69 22 L79 13 L76 30 Z"/>
-          <path d="M43 34 H77"/>
-          <circle cx="60" cy="5" r="1.8"/><circle cx="41" cy="10.500" r="1.500"/><circle cx="79" cy="10.500" r="1.500"/>
-          <!-- wreath -->
-          <path d="M60 142 C28 138 14 112 18 86 C20 68 30 54 44 47"/>
-          <path d="M60 142 C92 138 106 112 102 86 C100 68 90 54 76 47"/>
-          <path d="M21 76 q-11 -3 -13 -13 q11 1 13 13 M18 93 q-12 0 -16 -9 q11 -2 16 9 M21 110 q-12 3 -18 -5 q10 -5 18 5 M30 125 q-10 6 -19 0 q8 -8 19 0 M43 136 q-8 8 -18 5 q5 -10 18 -5 M30 60 q-9 -6 -8 -16 q10 4 8 16"/>
-          <path d="M99 76 q11 -3 13 -13 q-11 1 -13 13 M102 93 q12 0 16 -9 q-11 -2 -16 9 M99 110 q12 3 18 -5 q-10 -5 -18 5 M90 125 q10 6 19 0 q-8 -8 -19 0 M77 136 q8 8 18 5 q-5 -10 -18 -5 M90 60 q9 -6 8 -16 q-10 4 -8 16"/>
-          <path d="M52 146 q8 -7 16 0"/>
+          <!-- rose in the corner -->
+          <g transform="translate(22 22)">
+            <g fill="currentColor" fill-opacity=".16">
+              <ellipse cy="-8" rx="6.500" ry="7.500"/>
+              <ellipse cy="-8" rx="6.500" ry="7.500" transform="rotate(72)"/>
+              <ellipse cy="-8" rx="6.500" ry="7.500" transform="rotate(144)"/>
+              <ellipse cy="-8" rx="6.500" ry="7.500" transform="rotate(216)"/>
+              <ellipse cy="-8" rx="6.500" ry="7.500" transform="rotate(288)"/>
+            </g>
+            <circle r="7" fill="currentColor" fill-opacity=".12"/>
+            <path d="M-4.500 1.500c-1-5 5-8 8-4 3 4-2 9-6 6-2-2-1-5 2-5 2 0 3 2 1.500 3.500"/>
+          </g>
+
+          <!-- leaf on the diagonal, pointing into the page -->
+          <path d="M38 38c13 2 23 12 25 25-13-2-23-12-25-25z" fill="currentColor" fill-opacity=".2"/>
+          <path d="M40 40l21 21" stroke-width="1" stroke-opacity=".7"/>
+          <circle cx="69" cy="69" r="1.600" fill="currentColor" stroke="none"/>
+          <circle cx="75" cy="75" r="1.100" fill="currentColor" stroke="none"/>
         </g>
-        <text x="60" y="86" text-anchor="middle" font-family="Cinzel, serif" font-size="27" fill="url(#gold)">E</text>
-        <text x="60" y="116" text-anchor="middle" font-family="Cinzel, serif" font-size="27" fill="url(#gold)">C</text>
       </symbol>
 
-      <symbol id="flourish" viewBox="0 0 240 20">
-        <g fill="none" stroke="url(#gold)" stroke-width="1.100" stroke-linecap="round">
-          <path d="M4 10 H96"/><path d="M144 10 H236"/>
-          <path d="M96 10 q8 -9 16 0 q-8 9 -16 0 Z"/><path d="M144 10 q-8 -9 -16 0 q8 9 16 0 Z"/>
-          <path d="M120 3 l5 7 l-5 7 l-5 -7 Z"/>
+      <!-- Crest above each heading -->
+      <symbol id="orn-crest" viewBox="0 0 200 44">
+        <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <g id="orn-crest-half">
+            <path d="M94 30c-8 1-14-5-12-12 2-5 9-5 10 0 1 3-3 5-4 3"/>
+            <path d="M84 27C70 32 58 22 44 26c-10 3-20 1-27-5"/>
+            <path d="M60 24c-4-7 2-13 8-10 3 2 2 6-1 6"/>
+            <path d="M36 27c-3 5-9 6-13 3"/>
+            <circle cx="13" cy="19" r="1.4" fill="currentColor" stroke="none"/>
+          </g>
+          <use href="#orn-crest-half" transform="translate(200 0) scale(-1 1)"/>
+          <path d="M100 5l5.500 11-5.500 11-5.500-11z" fill="currentColor" fill-opacity=".85"/>
+          <path d="M100 30v9"/>
+          <circle cx="100" cy="41" r="1.300" fill="currentColor" stroke="none"/>
         </g>
       </symbol>
+
+      <!-- Divider between blocks of text -->
+      <symbol id="orn-divider" viewBox="0 0 200 20">
+        <g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round">
+          <g id="orn-divider-half">
+            <path d="M12 10h64"/>
+            <path d="M76 10c5-6 12-5 11 0-1 4-6 3-5 0"/>
+            <circle cx="7" cy="10" r="1.3" fill="currentColor" stroke="none"/>
+          </g>
+          <use href="#orn-divider-half" transform="translate(200 0) scale(-1 1)"/>
+          <path d="M100 3l5 7-5 7-5-7z" fill="currentColor"/>
+        </g>
+      </symbol>
+
+      <!-- Flower sprig -->
+      <symbol id="orn-sprig" viewBox="0 0 140 96">
+        <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M52 40c2 18 9 32 18 50M92 36c-3 20-11 36-22 54"/>
+          <path d="M58 66c-12-4-22-1-28 8 11 3 21 0 28-8zM84 64c12-5 23-3 30 5-11 4-22 2-30-5z" fill="currentColor" fill-opacity=".16"/>
+          <path d="M44 74c-3-8-10-12-18-11M100 72c4-8 11-11 19-9"/>
+          <g id="orn-bloom" transform="translate(50 26)">
+            <ellipse cy="-10" rx="5.500" ry="9" fill="currentColor" fill-opacity=".1"/>
+            <ellipse cy="-10" rx="5.500" ry="9" fill="currentColor" fill-opacity=".1" transform="rotate(72)"/>
+            <ellipse cy="-10" rx="5.500" ry="9" fill="currentColor" fill-opacity=".1" transform="rotate(144)"/>
+            <ellipse cy="-10" rx="5.500" ry="9" fill="currentColor" fill-opacity=".1" transform="rotate(216)"/>
+            <ellipse cy="-10" rx="5.500" ry="9" fill="currentColor" fill-opacity=".1" transform="rotate(288)"/>
+            <circle r="2.600" fill="currentColor" stroke="none"/>
+          </g>
+          <use href="#orn-bloom" transform="translate(44 -6) scale(1.12) translate(-6 2)"/>
+        </g>
+      </symbol>
+
+      <!-- Line icons, 48 × 48 -->
+      <symbol id="i-chev" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="M16 21l8 8 8-8"/></g></symbol>
+      <symbol id="i-person" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="17" r="7"/><path d="M10 40c1-9 7-13 14-13s13 4 14 13z"/></g></symbol>
+      <symbol id="i-clock" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="15"/><path d="M24 14v10l7 5"/></g></symbol>
+      <symbol id="i-mail" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="13" width="32" height="22" rx="2"/><path d="M8 15l16 12 16-12"/></g></symbol>
+      <symbol id="i-camera" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17h8l3-4h12l3 4h8v20H7z"/><circle cx="24" cy="26" r="6.500"/></g></symbol>
+      <symbol id="i-church" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 3v10M20.500 7h7M14 44V24l10-11 10 11v20M6 44V33l8-5M42 44V33l-8-5M3 44h42M20 44v-8a4 4 0 0 1 8 0v8"/><circle cx="24" cy="25" r="2.600"/></g></symbol>
+      <symbol id="i-toast" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-14 22 34)"><path d="M14 14h16l-1.500 15a6.500 6.500 0 0 1-13 0z"/><path d="M22 36v16M16 52h12"/></g><g transform="rotate(14 42 34)"><path d="M34 14h16l-1.500 15a6.500 6.500 0 0 1-13 0z"/><path d="M42 36v16M36 52h12"/></g><path d="M32 4v5M27 6l1.500 3.500M37 6l-1.500 3.500"/></g></symbol>
+      <symbol id="i-pin" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 44C15 31 10 24 10 17a14 14 0 0 1 28 0c0 7-5 14-14 27z"/><circle cx="24" cy="17" r="5"/></g></symbol>
+      <symbol id="i-hotel" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 44V15h30v29M4 44h40M15 9h18v6H15zM20 44v-8h8v8M16 22h3M22.500 22h3M29 22h3M16 29h3M22.500 29h3M29 29h3"/></g></symbol>
     </defs>
   </svg>
 
@@ -55,124 +137,378 @@
   <div class="veil" aria-hidden="true"></div>
   <div class="petals" id="petals" aria-hidden="true"></div>
 
-  <nav class="nav" aria-label="Sections">
-    <a href="#top" class="nav__mark" aria-label="Back to top">E <span>&amp;</span> C</a>
-    <div class="nav__links">
-      <a href="#day">The Day</a>
-      <a href="#entourage">Entourage</a>
-      <a href="#rsvp">RSVP</a>
-    </div>
+  <!-- ============ Nav bar ============ -->
+  <!-- Clear over the hero photo on phones, a solid velvet bar once you scroll.
+       Wide screens show the links in the bar; smaller ones open the full-screen menu. -->
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="nav__brand" href="#top" aria-label="Erie and Christine, back to top"><img src="images/crest-sm.webp" width="138" height="141" alt="" draggable="false"></a>
+    <ul class="nav__links">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#entourage">Entourage</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#dress">Dress Code</a></li>
+      <li><a href="#reminders">Reminders</a></li>
+      <li><a class="nav__rsvp" href="#rsvp">RSVP</a></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- full-screen menu (phones and tablets) -->
+  <nav class="menu" id="menu" aria-label="All sections" inert>
+    <img class="menu__rose menu__rose--l" src="images/rose-corner.webp" width="720" height="657" alt="" aria-hidden="true" draggable="false" loading="lazy">
+    <img class="menu__rose menu__rose--r" src="images/rose-corner.webp" width="720" height="657" alt="" aria-hidden="true" draggable="false" loading="lazy">
+    <img class="menu__crest" src="images/crest.webp" width="440" height="448" alt="" aria-hidden="true" draggable="false" loading="lazy">
+    <ul>
+      <li style="--i:0"><a href="#top">Home</a></li>
+      <li style="--i:1"><a href="#story">Our Story</a></li>
+      <li style="--i:2"><a href="#entourage">Entourage</a></li>
+      <li style="--i:3"><a href="#details">Wedding Details</a></li>
+      <li style="--i:4"><a href="#location">Our Location</a></li>
+      <li style="--i:5"><a href="#dress">Dress Code</a></li>
+      <li style="--i:6"><a href="#reminders">Reminders</a></li>
+      <li style="--i:7"><a href="#rsvp">RSVP</a></li>
+    </ul>
+    <p class="menu__date">12 · 28 · 2026</p>
   </nav>
 
   <!-- ============ HERO ============ -->
   <header class="hero" id="top">
-    <div class="sparkles" id="sparkles" aria-hidden="true"></div>
-
-    <h1 class="sr-only">Erie Samuel &amp; Christine Ann — together with their families, request the honor of your presence as they exchange vows on Monday, December 28, 2026 at 1:00 PM, Our Lady of the Most Holy Rosary Cathedral. Reception to follow at Ariana Hotel.</h1>
-
-    <div class="invitation-wrap">
-
-      <img class="invitation" draggable="false" src="invitation.webp" width="882" height="1259" alt="" fetchpriority="high">
-
+    <!-- the couple's photo: on top on phones, the left half on wide screens -->
+    <div class="hero__photo">
+      <img src="images/hero-couple.webp" width="1536" height="1024" alt="Erie and Christine, foreheads touching, in a meadow at golden hour" draggable="false" fetchpriority="high">
+      <div class="sparkles" id="sparkles" aria-hidden="true"></div>
     </div>
+    <img class="hero__vine" src="images/rose-vine.webp" width="360" height="1384" alt="" aria-hidden="true" draggable="false">
 
-    <a class="scroll-cue" href="#countdown" aria-label="Scroll down"><span></span></a>
+    <!-- the arched parchment card -->
+    <div class="hero__card">
+      <img class="hero__rose hero__rose--l" src="images/rose-corner.webp" width="720" height="657" alt="" aria-hidden="true" draggable="false">
+      <img class="hero__rose hero__rose--r" src="images/rose-corner.webp" width="720" height="657" alt="" aria-hidden="true" draggable="false">
+
+      <p class="label hero__eyebrow hero__in" style="--d:.2s">We&rsquo;re getting married!</p>
+      <h1 class="hero__names hero__in" style="--d:.34s">
+        <span>Erie Samuel</span>
+        <i aria-hidden="true">&amp;</i><span class="sr-only"> and </span>
+        <span>Christine Ann</span>
+      </h1>
+      <p class="label hero__date hero__in" style="--d:.48s">December 28, 2026</p>
+      <svg class="divider hero__in" style="--d:.56s" aria-hidden="true"><use href="#orn-divider"/></svg>
+      <p class="hero__lead hero__in" style="--d:.64s">And we would love for you<br>to be part of our beginning.</p>
+      <a class="cue hero__cue" href="#countdown" aria-label="Scroll down"><svg aria-hidden="true"><use href="#i-chev"/></svg></a>
+    </div>
   </header>
 
-  <!-- ============ COUNTDOWN ============ -->
-  <section class="section section--tight" id="countdown">
-    <p class="eyebrow reveal">Counting down to forever</p>
-    <div class="countdown reveal" id="timer" role="timer" aria-live="off">
-      <div class="countdown__cell"><span class="countdown__num gold-text" data-unit="days">--</span><span class="countdown__label">Days</span></div>
-      <div class="countdown__cell"><span class="countdown__num gold-text" data-unit="hours">--</span><span class="countdown__label">Hours</span></div>
-      <div class="countdown__cell"><span class="countdown__num gold-text" data-unit="minutes">--</span><span class="countdown__label">Minutes</span></div>
-      <div class="countdown__cell"><span class="countdown__num gold-text" data-unit="seconds">--</span><span class="countdown__label">Seconds</span></div>
-    </div>
-  </section>
+  <main>
 
-  <!-- ============ THE DAY ============ -->
-  <section class="section" id="day">
-    <div class="section__head reveal">
-      <p class="eyebrow">Monday · December 28, 2026</p>
-      <h2 class="script gold-text">The Day</h2>
-      <svg class="flourish" aria-hidden="true"><use href="#flourish"/></svg>
-    </div>
+    <!-- ============ Countdown ============ -->
+    <section class="panel panel--dark panel--arch countdown" id="countdown">
+      <div class="panel__inner">
+        <div class="panel__body">
+          <svg class="crest reveal" aria-hidden="true"><use href="#orn-crest"/></svg>
+          <h2 class="title title--serif reveal" style="--d:.08s">A lifetime together<br>begins in</h2>
+          <div class="countdown__grid reveal" style="--d:.16s" id="timer" role="timer" aria-live="off">
+            <div class="unit"><b data-unit="days">--</b><span>Days</span></div>
+            <div class="unit"><b data-unit="hours">--</b><span>Hours</span></div>
+            <div class="unit"><b data-unit="minutes">--</b><span>Minutes</span></div>
+            <div class="unit"><b data-unit="seconds">--</b><span>Seconds</span></div>
+          </div>
+          <svg class="divider reveal" style="--d:.24s" aria-hidden="true"><use href="#orn-divider"/></svg>
+          <p class="quote reveal" style="--d:.3s">Not just a day,<br>but the beginning<br>of a journey together.</p>
+        </div>
+      </div>
+    </section>
 
-    <div class="cards">
-      <article class="card reveal">
-        <p class="card__kicker">The Ceremony</p>
-        <p class="card__time gold-text">1:00 PM</p>
-        <h3 class="card__place">Our Lady of the Most Holy Rosary Cathedral</h3>
-        <p class="card__note">Where we exchange our vows</p>
-        <a class="btn" target="_blank" rel="noopener"
-           href="https://www.google.com/maps/search/?api=1&query=Our+Lady+of+the+Most+Holy+Rosary+Cathedral">View map</a>
-      </article>
+    <!-- ============ Our story ============ -->
+    <!-- Erie's words, as he wrote them (moodboard/Our-Story-Erie.pdf). Only the small chapter labels were added. -->
+    <section class="panel panel--light story" id="story">
+      <div class="panel__inner">
+        <div class="panel__body">
+          <svg class="crest reveal" aria-hidden="true"><use href="#orn-crest"/></svg>
+          <h2 class="title reveal" style="--d:.08s">Our Story</h2>
+          <p class="label reveal" style="--d:.14s">As told by Erie</p>
 
-      <article class="card reveal">
-        <p class="card__kicker">The Reception</p>
-        <p class="card__time gold-text">To Follow</p>
-        <h3 class="card__place">Ariana Hotel</h3>
-        <p class="card__note">Dinner, toasts and dancing</p>
-        <a class="btn" target="_blank" rel="noopener"
-           href="https://www.google.com/maps/search/?api=1&query=Ariana+Hotel">View map</a>
-      </article>
-    </div>
-  </section>
+          <div class="story__text">
+            <div class="chapter reveal" style="--d:.2s">
+              <h3 class="chapter__label">December 2018</h3>
+              <p>It was December 2018, before the pandemic. I was scrolling through Facebook while I was at NAIA when I unexpectedly came across her profile. I remember thinking how beautiful she was, so I searched for her on Facebook and eventually sent her a friend request.</p>
+              <p>I wanted to get to know her, so with the help of a friend, I found a way to reach out to her. At that time, I wasn't using a smartphone yet, only a keypad phone, so communicating wasn't as easy as it is today. I even tried giving her a diary notebook from PMA, hoping it would catch her attention and give us a chance to get to know each other.</p>
+              <p>But things didn't move forward. Perhaps it simply wasn't the right time. We were young and still had a lot to learn about ourselves. Looking back, I believe God allowed our paths to cross early because we still needed time to grow individually before we could grow together.</p>
+            </div>
 
-  <!-- ============ ENTOURAGE ============ -->
-  <section class="section" id="entourage">
-    <div class="section__head reveal">
-      <p class="eyebrow">Those who walk with us</p>
-      <h2 class="script gold-text">The Entourage</h2>
-      <svg class="flourish" aria-hidden="true"><use href="#flourish"/></svg>
-    </div>
-    <div class="entourage" id="entourage-list"></div>
-  </section>
+            <div class="story__more" id="storyMore">
+              <div class="chapter reveal">
+                <h3 class="chapter__label">Paths crossing again</h3>
+                <p>After that, I simply continued with my work and studies at the Philippine Military Academy. As time passed, our paths crossed again through communication, and eventually, we started talking, texting, and having phone calls. It was a pleasant surprise to reconnect with her. Hahaha!</p>
+                <p>Our communication wasn't very frequent because of the nature of my work and training at PMA. We could only call each other during authorized free time, whenever we were permitted to use our phones. Nevertheless, we made the most of the little time we had to communicate and get to know each other better.</p>
+                <p>During that time, we still hadn't met in person. My responsibilities at the academy made it difficult for us to see each other.</p>
+              </div>
 
-  <!-- ============ RSVP ============ -->
-  <section class="section" id="rsvp">
-    <div class="section__head reveal">
-      <p class="eyebrow">Kindly respond</p>
-      <h2 class="script gold-text">Will You Join Us?</h2>
-      <svg class="flourish" aria-hidden="true"><use href="#flourish"/></svg>
-    </div>
+              <div class="chapter reveal">
+                <h3 class="chapter__label">December 23, 2019 · Zamboanga City</h3>
+                <p>Then came December 22, 2019. It was finally time for our R&amp;R and Yuletide break. She was attending CEAP in Zamboanga City, and fortunately, there was a C-130 flight heading there. The timing couldn't have been more perfect. I truly believe God had a hand in bringing everything together.</p>
+                <p>I decided not to tell her that I was already on break because I wanted to surprise her. Finally, on December 23, 2019, we met face to face for the very first time in Zamboanga City.</p>
+                <p>I hitched a ride on the transportation provided by the school, and although we had less than eight hours together, it was a moment worth remembering.</p>
+                <p>We saw each other again around Christmas, but our time together was still brief.</p>
+              </div>
 
-    <form class="rsvp group reveal" id="rsvp-form">
-      <label class="field">
-        <span class="field__label">Your full name</span>
-        <input type="text" name="name" required maxlength="120" autocomplete="name">
-      </label>
+              <div class="chapter reveal">
+                <h3 class="chapter__label">December 28, 2019 · Manawan, Jose Dalman</h3>
+                <p>On December 26, I invited her to my younger sibling's debut celebration, which was scheduled for December 28 in Manawan, Jose Dalman.</p>
+                <p>Little did she know, I already had something else in mind. Hahaha! I was planning to ask her to officially be my girlfriend. After all that time getting to know each other and finally meeting in person, I thought it was time to take that next step.</p>
+              </div>
 
-      <fieldset class="field choice">
-        <legend class="field__label">Will you attend?</legend>
-        <label><input type="radio" name="attending" value="yes" required><span>Joyfully accepts</span></label>
-        <label><input type="radio" name="attending" value="no"><span>Regretfully declines</span></label>
-      </fieldset>
+              <div class="chapter reveal">
+                <h3 class="chapter__label">2020 – 2021 · Apart</h3>
+                <p>After we officially became a couple, I had to return to the Philippine Military Academy on January 4, 2020. It was difficult to say goodbye, especially after finally having the chance to be together in person. Little did we know that a much bigger challenge was about to come. The COVID-19 pandemic happened, and all our plans of seeing each other and going home throughout 2020 were suddenly put on hold.</p>
+                <p>After 17 months at PMA, I finally graduated and was able to come home in May 2021. I thought that would mean things would become easier for us, but it was only another chapter of our journey.</p>
+              </div>
 
-      <label class="field" id="rsvp-guests">
-        <span class="field__label">Number of guests, including you</span>
-        <input type="number" name="guests" min="1" max="10" value="1" inputmode="numeric">
-      </label>
+              <div class="chapter reveal">
+                <h3 class="chapter__label">Choosing each other</h3>
+                <p>As time went by, we got to know each other on a much deeper level. We discovered more about each other's personalities, beliefs, and perspectives. And as we learned more about one another, we also encountered more challenges. We didn't always share the same views, and there were plenty of times when our differences led to disagreements. There were even moments when we almost went our separate ways.</p>
+                <p>But through every difficult season, we learned that love wasn't just about being happy together. It was also about understanding, forgiving, compromising, and choosing each other even when things weren't easy.</p>
+                <p>Above all, we held on to our faith and kept God at the center of our relationship. We knew that we couldn't figure everything out on our own, so we continued to seek His guidance. And somehow, through His grace, we found our way through every challenge.</p>
+                <p>Despite all the disagreements and difficult days, I continued choosing her. No matter how stressful life became, she was always there. Even during our hardest days, she somehow knew how to bring happiness into my life and lighten my mood. Before I knew it, we would find ourselves laughing again, as if the weight of the day had suddenly become a little lighter.</p>
+              </div>
 
-      <label class="field">
-        <span class="field__label">A message for the couple <em>(optional)</em></span>
-        <textarea name="message" rows="3" maxlength="500"></textarea>
-      </label>
+              <div class="chapter reveal">
+                <h3 class="chapter__label">The woman I prayed for</h3>
+                <p>One thing I love about us is how we can be completely crazy together. We get to do silly things, tease each other, joke around, and play like kids wherever we are. We don't have to worry about looking too childish or immature because we never judge each other for simply being ourselves. We just enjoy being crazy together. SABAY SA TAMA! Hahaha!</p>
+                <p>Beyond all the fun and laughter, she inspires me to become a better person. When I think about my future, she's the person I see myself building a life with. She values communication and is very straightforward, which has taught me the importance of being open with each other.</p>
+                <p>She is my home, the person I find comfort in no matter what life brings. She's also the one who takes care of me whenever I get sick, making sure I'm okay even in the simplest ways.</p>
+                <p>And perhaps one of the most meaningful things I can say about her is that she is the woman I prayed for. I may not have known exactly when or how God would answer that prayer, but looking at where we are today, I am grateful that He allowed our paths to cross and gave us the chance to grow together.</p>
+              </div>
+            </div>
 
-      <!-- left empty by people; filled in by spam bots -->
-      <label class="rsvp__trap" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            <button class="btn story__toggle" id="storyToggle" type="button" aria-expanded="true" aria-controls="storyMore" hidden><span>Continue reading</span></button>
+          </div>
 
-      <button class="btn btn--solid" type="submit">Send RSVP</button>
-      <p class="rsvp__status" id="rsvp-status" role="status" aria-live="polite"></p>
-    </form>
-  </section>
+          <svg class="divider reveal" aria-hidden="true"><use href="#orn-divider"/></svg>
+          <blockquote class="quote story__quote reveal">
+            “She became more than the woman I fell in love with. She became my best friend, my safe place, my greatest inspiration, and the person I want to experience all of life's adventures with.”
+            <cite>Erie</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Entourage ============ -->
+    <!-- Names come from ENTOURAGE in js/script.js -->
+    <section class="panel panel--dark" id="entourage">
+      <div class="panel__inner">
+        <div class="panel__body">
+          <svg class="crest reveal" aria-hidden="true"><use href="#orn-crest"/></svg>
+          <h2 class="title reveal" style="--d:.08s">Entourage</h2>
+          <div class="ent" id="entourage-list"></div>
+          <svg class="divider reveal" aria-hidden="true"><use href="#orn-divider"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Wedding details ============ -->
+    <section class="panel panel--light" id="details">
+      <div class="panel__inner">
+        <div class="panel__body">
+          <svg class="crest reveal" aria-hidden="true"><use href="#orn-crest"/></svg>
+          <h2 class="title reveal" style="--d:.08s">Wedding Details</h2>
+
+          <div class="facts">
+            <div class="fact reveal" style="--d:.16s">
+              <svg class="fact__icon" aria-hidden="true"><use href="#i-church"/></svg>
+              <div>
+                <h3 class="label">The Ceremony</h3>
+                <p>Our Lady of the Most Holy Rosary Cathedral</p>
+                <p>Dipolog City</p>
+                <p class="fact__when">Monday, December 28, 2026<br>1:00 PM</p>
+              </div>
+            </div>
+            <div class="fact reveal" style="--d:.24s">
+              <svg class="fact__icon" aria-hidden="true"><use href="#i-toast"/></svg>
+              <div>
+                <h3 class="label">The Reception</h3>
+                <p>Ariana Hotel</p>
+                <p>Dipolog City</p>
+                <p class="fact__when">Reception to follow.</p>
+              </div>
+            </div>
+          </div>
+
+          <a class="btn reveal" style="--d:.32s" href="#location"><span>View Location</span></a>
+          <svg class="divider reveal" style="--d:.36s" aria-hidden="true"><use href="#orn-divider"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Our location ============ -->
+    <section class="panel panel--light" id="location">
+      <div class="panel__inner">
+        <div class="panel__body">
+          <svg class="crest reveal" aria-hidden="true"><use href="#orn-crest"/></svg>
+          <h2 class="title reveal" style="--d:.08s">Our Location</h2>
+
+          <div class="facts">
+            <div class="fact reveal" style="--d:.16s">
+              <svg class="fact__icon" aria-hidden="true"><use href="#i-pin"/></svg>
+              <div>
+                <h3 class="label">Ceremony</h3>
+                <p>Our Lady of the Most Holy Rosary Cathedral</p>
+                <p>Dipolog City</p>
+                <a class="btn btn--small" target="_blank" rel="noopener"
+                   href="https://www.google.com/maps/search/?api=1&amp;query=Our+Lady+of+the+Most+Holy+Rosary+Cathedral+Dipolog+City"><span>Open in Google Maps</span></a>
+              </div>
+            </div>
+            <div class="fact reveal" style="--d:.24s">
+              <svg class="fact__icon" aria-hidden="true"><use href="#i-hotel"/></svg>
+              <div>
+                <h3 class="label">Reception</h3>
+                <p>Ariana Hotel</p>
+                <p>Dipolog City</p>
+                <a class="btn btn--small" target="_blank" rel="noopener"
+                   href="https://www.google.com/maps/search/?api=1&amp;query=Ariana+Hotel+Dipolog+City"><span>Open in Google Maps</span></a>
+              </div>
+            </div>
+          </div>
+
+          <svg class="sprig reveal" aria-hidden="true"><use href="#orn-sprig"/></svg>
+          <p class="quote reveal">See you there!</p>
+          <svg class="divider reveal" aria-hidden="true"><use href="#orn-divider"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Dress code ============ -->
+    <section class="panel panel--light panel--arch" id="dress">
+      <div class="panel__inner">
+        <div class="panel__body">
+          <svg class="crest reveal" aria-hidden="true"><use href="#orn-crest"/></svg>
+          <h2 class="title reveal" style="--d:.08s">Dress Code</h2>
+          <p class="label reveal" style="--d:.14s">Formal Attire</p>
+
+          <ul class="palette">
+            <li class="reveal" style="--c:#6e1423;--d:.18s"><span class="swatch"></span><b>Burgundy</b></li>
+            <li class="reveal" style="--c:#c79b8d;--d:.24s"><span class="swatch"></span><b>Dusty Rose</b></li>
+            <li class="reveal" style="--c:#e0b2a6;--d:.3s"><span class="swatch"></span><b>Blush</b></li>
+            <li class="reveal" style="--c:#e6d0b3;--d:.36s"><span class="swatch"></span><b>Champagne</b></li>
+            <li class="reveal" style="--c:#b88f55;--d:.42s"><span class="swatch"></span><b>Gold</b></li>
+          </ul>
+
+          <p class="lead reveal">We invite you to dress elegantly in our wedding color palette.</p>
+          <svg class="divider reveal" aria-hidden="true"><use href="#orn-divider"/></svg>
+          <p class="quote quote--small reveal">Kindly refrain<br>from wearing black.</p>
+          <img class="seal reveal" src="images/seal.webp" width="360" height="360" alt="" aria-hidden="true" draggable="false" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Important reminders ============ -->
+    <section class="panel panel--light" id="reminders">
+      <div class="panel__inner">
+        <div class="panel__body">
+          <svg class="crest reveal" aria-hidden="true"><use href="#orn-crest"/></svg>
+          <h2 class="title reveal" style="--d:.08s">Important Reminders</h2>
+
+          <ul class="reminders">
+            <li class="reveal" style="--d:.14s">
+              <svg aria-hidden="true"><use href="#i-person"/></svg>
+              <p>Strictly no plus ones. Seats are reserved for invited guests only.</p>
+            </li>
+            <li class="reveal" style="--d:.22s">
+              <svg aria-hidden="true"><use href="#i-clock"/></svg>
+              <p>Please arrive early to ensure a smooth and timely celebration.</p>
+            </li>
+            <li class="reveal" style="--d:.3s">
+              <svg aria-hidden="true"><use href="#i-mail"/></svg>
+              <p>Kindly confirm your attendance before the RSVP deadline.</p>
+            </li>
+            <li class="reveal" style="--d:.38s">
+              <svg aria-hidden="true"><use href="#i-camera"/></svg>
+              <p>Unplugged ceremony. We kindly request no photos or videos during the ceremony.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RSVP ============ -->
+    <section class="panel panel--dark" id="rsvp">
+      <div class="panel__inner">
+        <div class="panel__body">
+          <svg class="crest reveal" aria-hidden="true"><use href="#orn-crest"/></svg>
+          <h2 class="title title--caps reveal" style="--d:.08s">RSVP</h2>
+          <!-- The "on or before …" line appears once RSVP_BY is filled in at the top of js/script.js -->
+          <p class="lead reveal" style="--d:.16s">Kindly confirm your attendance<span id="rsvp-by-wrap" hidden><br>on or before<br><em id="rsvp-by"></em></span></p>
+
+          <form class="form reveal" style="--d:.24s" id="rsvp-form">
+            <label class="field">
+              <span class="sr-only">Full name</span>
+              <input type="text" name="name" placeholder="Full Name" required maxlength="120" autocomplete="name">
+            </label>
+
+            <fieldset class="choice">
+              <legend>Will you be attending?</legend>
+              <label><input type="radio" name="attending" value="yes" required><span>Yes</span></label>
+              <label><input type="radio" name="attending" value="no"><span>No</span></label>
+            </fieldset>
+
+            <label class="field" id="rsvp-guests">
+              <span>Number of Guests</span>
+              <select name="guests">
+                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Message <small>(optional)</small></span>
+              <textarea name="message" rows="3" maxlength="500" placeholder="We can't wait to celebrate with you!"></textarea>
+            </label>
+
+            <!-- left empty by people; filled in by spam bots -->
+            <label class="form__trap" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+
+            <button class="btn" type="submit"><span>Submit</span></button>
+            <p class="rsvp__status" id="rsvp-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Closing letter ============ -->
+    <section class="panel panel--dark closing" id="closing">
+      <div class="glow__stars" id="stars" aria-hidden="true"></div>
+      <div class="panel__inner">
+        <div class="panel__body">
+          <div class="letter reveal">
+            <p>We cannot wait<br>to celebrate our love<br>and the beginning of<br>a lifetime together with you.</p>
+            <p class="letter__with">With love,</p>
+            <p class="letter__names">Erie &amp; Christine</p>
+            <svg class="divider" aria-hidden="true"><use href="#orn-divider"/></svg>
+            <p class="letter__date">28 · 12 · 26</p>
+          </div>
+
+          <div class="candles" aria-hidden="true">
+            <span class="candle" style="--h:64px;--s:1.9s"></span>
+            <span class="candle" style="--h:104px;--s:2.4s"></span>
+            <span class="candle" style="--h:48px;--s:1.6s"></span>
+            <span class="candle" style="--h:124px;--s:2.1s"></span>
+            <span class="candle" style="--h:80px;--s:2.7s"></span>
+            <span class="candle" style="--h:112px;--s:1.8s"></span>
+            <span class="candle" style="--h:56px;--s:2.3s"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
-    <img class="footer__monogram" src="crest.webp" width="191" height="200" alt="E and C monogram" draggable="false" loading="lazy">
+    <img class="footer__monogram" src="images/crest.webp" width="440" height="448" alt="E and C monogram" draggable="false" loading="lazy">
     <p class="script gold-text footer__names">Erie &amp; Christine</p>
-    <p class="caps">12 · 28 · 2026</p>
+    <p class="label">12 · 28 · 2026</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
