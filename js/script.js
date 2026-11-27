@@ -1,3 +1,9 @@
+/* ---------- Wording rules from the couple (review notes, November 2026) ----------
+   - Erie's name always comes first: "Erie & Christine".
+   - Never "forever": use "a lifetime together" or "a journey together".
+   - "Guardians of the Bride", not "Parents of the Bride".
+   - Entourage: sponsors are listed ahead of the groomsmen and bridesmaids. */
+
 /* ---------- Wedding date ----------
    December 28, 2026, 1:00 PM, Philippine time (UTC+8). */
 const WEDDING = new Date("2026-12-28T13:00:00+08:00");
@@ -6,6 +12,10 @@ const WEDDING = new Date("2026-12-28T13:00:00+08:00");
    Paste the web app URL from Google Apps Script here
    (see apps-script/Code.gs for the setup steps). */
 const RSVP_URL = "https://script.google.com/macros/s/AKfycbwm_oP8T1fg1lAFfLi5TvZhkzBIlxAnEj6dRQiQ40hnDEa2nZJ_euK7m9GTAE8Xw92TQw/exec";
+
+/* ---------- RSVP deadline ----------
+   As it should read, e.g. "November 28, 2026". Leave "" to show no date. */
+const RSVP_BY = "";
 
 /* ---------- Entourage ----------
    Edit names here. Each group is either:
@@ -113,20 +123,21 @@ function el(tag, className, text) {
 function renderEntourage() {
   const root = document.getElementById("entourage-list");
   for (const group of ENTOURAGE) {
-    const section = el("section", "group reveal");
-    if (group.title) section.append(el("h3", "group__title gold-text", group.title));
+    const section = el("section", "ent__group reveal");
+    if (group.title) section.append(el("h3", "label ent__title", group.title));
 
     if (group.pairs) {
-      const grid = el("div", "pairs");
+      const grid = el("div", "ent__pairs");
       for (const [left, right] of group.pairs) grid.append(el("span", "", left), el("span", "", right));
       section.append(grid);
     } else {
-      const cols = el("div", "group__cols");
-      cols.setAttribute("style", `--cols:${group.columns.length}`);
+      const cols = el("div", `ent__cols ent__cols--${group.columns.length}`);
+      cols.style.setProperty("--cols", group.columns.length);
       for (const col of group.columns) {
         const wrap = el("div");
-        if (col.role) wrap.append(el("h4", "role", col.role));
-        const list = el("ul", "people");
+        // Under a group title the role is a quiet sub-heading; on its own it is the heading.
+        if (col.role) wrap.append(group.title ? el("h4", "ent__role", col.role) : el("h3", "label ent__role", col.role));
+        const list = el("ul");
         for (const name of col.names) list.append(el("li", "", name));
         wrap.append(list);
         cols.append(wrap);
@@ -135,6 +146,23 @@ function renderEntourage() {
     }
     root.append(section);
   }
+}
+
+/* Border lines, four corner flourishes and a "next" arrow on every framed page. */
+function frameSections() {
+  const svg = (id, cls) => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
+  const corners = ["tl", "tr", "bl", "br"].map((c) => svg("orn-corner", `corner corner--${c}`)).join("");
+  document.querySelectorAll(".panel__inner, .letter").forEach((box) => {
+    box.classList.add("framed");
+    box.insertAdjacentHTML("afterbegin", `<div class="frame-lines" aria-hidden="true"></div>${corners}`);
+  });
+  const panels = [...document.querySelectorAll(".panel")];
+  panels.forEach((panel, i) => {
+    const next = panels[i + 1];
+    if (!next) return;
+    panel.querySelector(".panel__inner").insertAdjacentHTML("beforeend",
+      `<a class="cue" href="#${next.id}" aria-label="Next section">${svg("i-chev", "")}</a>`);
+  });
 }
 
 function startCountdown() {
@@ -148,9 +176,8 @@ function startCountdown() {
     const diff = WEDDING - Date.now();
     if (diff <= 0) {
       clearInterval(handle);
-      timer.className = "countdown countdown--done reveal is-in";
+      timer.className = "countdown--done reveal is-in";
       timer.replaceChildren(el("p", "script gold-text", "Just married"));
-      timer.firstChild.style.fontSize = "clamp(2.800rem, 10vw, 4.200rem)";
       return;
     }
     const s = Math.floor(diff / 1000);
@@ -205,7 +232,7 @@ function scatterPetals() {
   }
 }
 
-/* Gold dust twinkling around the invitation. */
+/* Gold dust twinkling over the couple's photo. */
 function scatterSparkles() {
   if (calmMotion) return;
   const layer = document.getElementById("sparkles");
@@ -217,14 +244,14 @@ function scatterSparkles() {
   }
 }
 
-/* The backdrop is clear behind the invitation and dims as you scroll into the page. */
+/* The velvet backdrop dims a little as you scroll into the page. */
 function dimBackdropOnScroll() {
   const veil = document.querySelector(".veil");
   let queued = false;
   const update = () => {
     queued = false;
     const progress = Math.min(window.scrollY / (window.innerHeight * 0.75), 1);
-    veil.style.setProperty("--veil", (progress * 0.8).toFixed(3));
+    veil.style.setProperty("--veil", (progress * 0.45).toFixed(3));
   };
   window.addEventListener("scroll", () => {
     if (!queued) { queued = true; requestAnimationFrame(update); }
@@ -285,6 +312,11 @@ function setUpRsvp() {
   const guests = document.getElementById("rsvp-guests");
   const button = form.querySelector("button");
 
+  if (RSVP_BY) {
+    document.getElementById("rsvp-by").textContent = RSVP_BY;
+    document.getElementById("rsvp-by-wrap").hidden = false;
+  }
+
   const say = (text, isError = false) => {
     status.textContent = text;
     status.classList.toggle("is-error", isError);
@@ -324,7 +356,83 @@ function setUpRsvp() {
   });
 }
 
+/* Nav bar: clear over the hero photo, a solid bar once you scroll,
+   and the link of the section you are reading is underlined. */
+function setUpNav() {
+  const nav = document.getElementById("nav");
+  const links = [...nav.querySelectorAll(".nav__links a")];
+  const sections = links.map((a) => document.querySelector(a.getAttribute("href")));
+  let queued = false;
+  const update = () => {
+    queued = false;
+    nav.classList.toggle("is-solid", window.scrollY > 16);
+    const line = window.innerHeight * 0.4;
+    let current = -1;
+    sections.forEach((section, i) => { if (section.getBoundingClientRect().top <= line) current = i; });
+    links.forEach((a, i) => {
+      if (i === current) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+    });
+  };
+  const request = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+  window.addEventListener("scroll", request, { passive: true });
+  window.addEventListener("resize", request);
+  update();
+}
+
+/* Menu: on phones and tablets the three lines open a full-screen list of sections. */
+function setUpMenu() {
+  const button = document.getElementById("menuBtn");
+  const panel = document.getElementById("menu");
+  const isOpen = () => document.body.classList.contains("menu-open");
+  const set = (open) => {
+    document.body.classList.toggle("menu-open", open);
+    button.setAttribute("aria-expanded", String(open));
+    button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    panel.inert = !open;
+  };
+  button.addEventListener("click", () => set(!isOpen()));
+  panel.addEventListener("click", (event) => { if (event.target.closest("a")) set(false); });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isOpen()) { set(false); button.focus(); }
+  });
+  // wide screens show the links in the bar instead, so close the menu if the window grows
+  window.matchMedia("(min-width: 1000px)").addEventListener("change", (event) => { if (event.matches) set(false); });
+}
+
+/* Our story: the later chapters fold away behind a "Continue reading" button. */
+function setUpStory() {
+  const more = document.getElementById("storyMore");
+  const toggle = document.getElementById("storyToggle");
+  const set = (open) => {
+    more.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.querySelector("span").textContent = open ? "Show less" : "Continue reading";
+  };
+  toggle.hidden = false;
+  set(false);
+  toggle.addEventListener("click", () => {
+    const open = more.hidden;
+    set(open);
+    // back to the top of the story when it folds away
+    if (!open) document.getElementById("story").scrollIntoView({ behavior: calmMotion ? "auto" : "smooth" });
+  });
+}
+
+function scatterStars() {
+  const layer = document.getElementById("stars");
+  for (let i = 0; i < 34; i++) {
+    const star = el("span");
+    star.style.cssText = `left:${rand(0, 100).toFixed(1)}%;top:${rand(0, 80).toFixed(1)}%;--t:${rand(2.4, 6).toFixed(1)}s;--dl:${(-rand(0, 5)).toFixed(1)}s`;
+    layer.append(star);
+  }
+}
+
 renderEntourage();
+frameSections();
+setUpNav();
+setUpMenu();
+setUpStory();
+scatterStars();
 startCountdown();
 setUpRsvp();
 revealOnScroll();

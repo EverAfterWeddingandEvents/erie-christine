@@ -5,7 +5,7 @@
  * (Extensions > Apps Script), then deploy it as a web app:
  *   Deploy > New deployment > Web app
  *   Execute as: Me        Who has access: Anyone
- * Copy the web app URL into RSVP_URL at the top of script.js.
+ * Copy the web app URL into RSVP_URL at the top of js/script.js.
  *
  * Every RSVP is added as a row on a sheet called "RSVPs"
  * (created automatically on the first response).
